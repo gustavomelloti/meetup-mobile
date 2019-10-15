@@ -1,6 +1,12 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { StatusBar } from 'react-native';
+import Routes from './routes';
 
 export default function src() {
-  return <Text> OI </Text>;
+  return (
+    <>
+      <StatusBar barStyle="light-content" backgroundColor="#22202c" />
+      <Routes />
+    </>
+  );
 }
