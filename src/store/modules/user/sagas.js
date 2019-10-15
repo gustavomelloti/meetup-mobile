@@ -20,8 +20,6 @@ export function* updateProfile({ payload }) {
     Alert.alert('Perfil atualizado', 'Perfil atualizado com sucesso!');
 
     yield put(updateProfileSuccess(response.data));
-
-    // history.push('/meetups');
   } catch (err) {
     Alert.alert('Erro na atualização', 'Erro ao atualizar perfil');
     yield put(updateProfileFailure());

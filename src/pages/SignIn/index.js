@@ -35,7 +35,7 @@ export default function SignIn({ navigation }) {
           <FormInput
             keyboardType="email-address"
             autoCorrect={false}
-            autocapitalize="none"
+            autoCapitalize="none"
             placeholder="Digite seu e-mail"
             returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}

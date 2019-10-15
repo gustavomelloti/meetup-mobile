@@ -37,7 +37,6 @@ export default function SignUp({ navigation }) {
         <Form>
           <FormInput
             autoCorrect={false}
-            autocapitalize="none"
             placeholder="Nome completo"
             returnKeyType="next"
             onSubmitEditing={() => emailRef.current.focus()}
@@ -47,7 +46,7 @@ export default function SignUp({ navigation }) {
           <FormInput
             keyboardType="email-address"
             autoCorrect={false}
-            autocapitalize="none"
+            autoCapitalize="none"
             placeholder="Digite seu e-mail"
             ref={emailRef}
             returnKeyType="next"

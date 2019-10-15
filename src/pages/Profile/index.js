@@ -5,13 +5,13 @@ import Background from '../../components/Background';
 
 // import { Container } from './styles';
 
-export default function Meetup() {
+export default function Profile() {
   return <Background />;
 }
 
-Meetup.navigationOptions = {
-  tabBarLabel: 'Meetups',
+Profile.navigationOptions = {
+  tabBarLabel: 'Meu perfil',
   tabBarIcon: ({ tintColor }) => (
-    <Icon name="list" size={20} color={tintColor} />
+    <Icon name="person" size={20} color={tintColor} />
   ),
 };

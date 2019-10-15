@@ -16,8 +16,6 @@ export function* signIn({ payload }) {
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(signSuccess(token, user));
-
-    // history.push('/meetups');
   } catch (err) {
     Alert.alert('Erro no login', 'E-mail ou senha inválidos');
     yield put(signFailure());
@@ -35,7 +33,6 @@ export function* signUp({ payload }) {
     });
 
     Alert.alert('Cadastro concluído', 'Cadastro realizado com sucesso!');
-    // history.push('/');
   } catch (err) {
     Alert.alert('Erro no cadastro', 'Erro ao realizar cadastro.');
     yield put(signFailure());
