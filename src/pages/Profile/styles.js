@@ -7,15 +7,6 @@ export const Container = styled.SafeAreaView`
   flex: 1;
 `;
 
-export const Title = styled.View`
-  text-align: center;
-  background: rgba(0, 0, 0, 0.3);
-  height: 64px;
-
-  justify-content: center;
-  align-items: center;
-`;
-
 export const Form = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: { padding: 30 },

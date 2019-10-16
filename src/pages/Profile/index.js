@@ -1,17 +1,15 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Image } from 'react-native';
 
 import { updateProfileRequest } from '../../store/modules/user/actions';
 import { signOut } from '../../store/modules/auth/actions';
 
-import logo from '../../assets/logo2.png';
 import Background from '../../components/Background';
+import Title from '../../components/Title';
 
 import {
   Container,
-  Title,
   Form,
   FormInput,
   Separator,
@@ -59,9 +57,7 @@ export default function Profile() {
   return (
     <Background>
       <Container>
-        <Title>
-          <Image source={logo} />
-        </Title>
+        <Title />
         <Form>
           <FormInput
             autoCorrect={false}
