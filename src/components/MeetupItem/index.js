@@ -7,7 +7,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { parseISO, format } from 'date-fns';
 import { pt } from 'date-fns/locale';
-import { cancelSubscription } from '../../store/modules/subscription/actions';
+import {
+  cancelSubscription,
+  doSubscription,
+} from '../../store/modules/subscription/actions';
 
 import {
   Container,
@@ -34,13 +37,16 @@ export default function MeetupItem({
     dispatch(cancelSubscription(data.id));
   }
 
+  function handleSubscription() {
+    dispatch(doSubscription(data.id));
+  }
+
   return (
     <Container>
       <Image
         style={{ height: 150 }}
         source={{
-          uri:
-            'https://insperiencia.com.br/blog/wp-content/uploads/2017/05/palestra-vamos-subir.jpg',
+          uri: data.banner.url,
         }}
       />
       <Info>

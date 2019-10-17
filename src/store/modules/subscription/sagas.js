@@ -24,7 +24,21 @@ export function* cancelSubscription({ payload }) {
   }
 }
 
+export function* doSubscription({ payload }) {
+  try {
+    const { id } = payload;
+    yield call(api.post, `subscriptions/${id}`);
+    Alert.alert('Inscrição confirmada!', 'Inscrição realizada com sucesso!');
+  } catch (err) {
+    Alert.alert(
+      'Erro na inscrição',
+      'Infelizmente não conseguimos processar sua inscrição. Verifique se você já está inscrito ou é o organizador deste Meetup.'
+    );
+  }
+}
+
 export default all([
   takeLatest('@subscription/LOAD_SUBSCRIPTION_REQUEST', loadSubscriptions),
-  takeLatest('@subscription/CANCEL_SUBSCRIPTION_SUCCESS', cancelSubscription),
+  takeLatest('@subscription/CANCEL_SUBSCRIPTION', cancelSubscription),
+  takeLatest('@subscription/DO_SUBSCRIPTION', doSubscription),
 ]);

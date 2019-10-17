@@ -13,7 +13,14 @@ export function loadSubscriptionsSuccess(data) {
 
 export function cancelSubscription(id) {
   return {
-    type: '@subscription/CANCEL_SUBSCRIPTION_SUCCESS',
+    type: '@subscription/CANCEL_SUBSCRIPTION',
+    payload: { id },
+  };
+}
+
+export function doSubscription(id) {
+  return {
+    type: '@subscription/DO_SUBSCRIPTION',
     payload: { id },
   };
 }
