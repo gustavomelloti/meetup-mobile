@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Image } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -30,6 +30,7 @@ export default function MeetupItem({
   showCancel = false,
 }) {
   const dispatch = useDispatch();
+  const loading = useSelector(state => state.subscription.loading);
 
   function handleSubscription() {}
 
@@ -69,7 +70,7 @@ export default function MeetupItem({
         </InfoRow>
       </Info>
       {showSubscription && (
-        <SubscriptionButton onPress={handleSubscription}>
+        <SubscriptionButton loading={loading} onPress={handleSubscription}>
           Realizar inscrição
         </SubscriptionButton>
       )}

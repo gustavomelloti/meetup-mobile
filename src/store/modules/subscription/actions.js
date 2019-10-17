@@ -26,7 +26,19 @@ export function cancelSubscription(id) {
 
 export function doSubscription(id) {
   return {
-    type: '@subscription/DO_SUBSCRIPTION',
+    type: '@subscription/DO_SUBSCRIPTION_REQUEST',
     payload: { id },
+  };
+}
+
+export function doSubscriptionSuccess() {
+  return {
+    type: '@subscription/DO_SUBSCRIPTION_SUCCESS',
+  };
+}
+
+export function doSubscriptionFailure() {
+  return {
+    type: '@subscription/DO_SUBSCRIPTION_FAILURE',
   };
 }

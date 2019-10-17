@@ -1,5 +1,5 @@
-import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { Alert } from 'react-native';
+import { takeLatest, call, put, all } from 'redux-saga/effects';
 
 import api from '../../../services/api';
 
@@ -7,6 +7,8 @@ import {
   loadSubscriptionsSuccess,
   loadSubscriptionsRequest,
   loadSubscriptionsFailure,
+  doSubscriptionSuccess,
+  doSubscriptionFailure,
 } from './actions';
 
 export function* loadSubscriptions() {
@@ -33,8 +35,10 @@ export function* doSubscription({ payload }) {
   try {
     const { id } = payload;
     yield call(api.post, `subscriptions/${id}`);
+    yield put(doSubscriptionSuccess());
     Alert.alert('Inscrição confirmada!', 'Inscrição realizada com sucesso!');
   } catch (err) {
+    yield put(doSubscriptionFailure());
     Alert.alert(
       'Erro na inscrição',
       'Infelizmente não conseguimos processar sua inscrição. Verifique se você já está inscrito ou é o organizador deste Meetup.'
@@ -45,5 +49,5 @@ export function* doSubscription({ payload }) {
 export default all([
   takeLatest('@subscription/LOAD_SUBSCRIPTION_REQUEST', loadSubscriptions),
   takeLatest('@subscription/CANCEL_SUBSCRIPTION', cancelSubscription),
-  takeLatest('@subscription/DO_SUBSCRIPTION', doSubscription),
+  takeLatest('@subscription/DO_SUBSCRIPTION_REQUEST', doSubscription),
 ]);
