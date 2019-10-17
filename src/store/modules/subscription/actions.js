@@ -11,6 +11,12 @@ export function loadSubscriptionsSuccess(data) {
   };
 }
 
+export function loadSubscriptionsFailure() {
+  return {
+    type: '@subscription/LOAD_SUBSCRIPTION_FAILURE',
+  };
+}
+
 export function cancelSubscription(id) {
   return {
     type: '@subscription/CANCEL_SUBSCRIPTION',

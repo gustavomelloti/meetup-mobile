@@ -2,6 +2,10 @@ import React, { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { Image } from 'react-native';
+
+import ValidationService from '../../services/ValidationService';
+import validation from './validation';
+
 import logo from '../../assets/logo2.png';
 
 import Background from '../../components/Background';
@@ -27,6 +31,8 @@ export default function SignUp({ navigation }) {
   const [password, setPassword] = useState('');
 
   function handleSubmit() {
+    if (!ValidationService.validate({ email, password, name }, validation))
+      return;
     dispatch(signUpRequest(name, email, password));
   }
 

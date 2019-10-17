@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { ActivityIndicator } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -9,11 +10,12 @@ import MeetupItem from '../../components/MeetupItem';
 
 import { loadSubscriptionsRequest } from '../../store/modules/subscription/actions';
 
-import { Container, List } from './styles';
+import { Container, List, Loading } from './styles';
 
 export default function Subscription() {
   const dispatch = useDispatch();
   const subscriptions = useSelector(state => state.subscription.subscriptions);
+  const loading = useSelector(state => state.subscription.loading);
 
   useEffect(() => {
     dispatch(loadSubscriptionsRequest());
@@ -23,13 +25,19 @@ export default function Subscription() {
     <Background>
       <Container>
         <Title />
-        <List
-          data={subscriptions}
-          keyExtractor={item => String(item.id)}
-          renderItem={({ item }) => (
-            <MeetupItem showCancel data={item.Meetup} />
-          )}
-        />
+        {loading ? (
+          <Loading>
+            <ActivityIndicator size="large" color="#FFF" />
+          </Loading>
+        ) : (
+          <List
+            data={subscriptions}
+            keyExtractor={item => String(item.id)}
+            renderItem={({ item }) => (
+              <MeetupItem showCancel data={item.Meetup} />
+            )}
+          />
+        )}
       </Container>
     </Background>
   );

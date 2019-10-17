@@ -3,13 +3,18 @@ import { Alert } from 'react-native';
 
 import api from '../../../services/api';
 
-import { loadSubscriptionsSuccess, loadSubscriptionsRequest } from './actions';
+import {
+  loadSubscriptionsSuccess,
+  loadSubscriptionsRequest,
+  loadSubscriptionsFailure,
+} from './actions';
 
 export function* loadSubscriptions() {
   try {
     const response = yield call(api.get, 'subscriptions');
     yield put(loadSubscriptionsSuccess(response.data));
   } catch (err) {
+    yield put(loadSubscriptionsFailure());
     Alert.alert('Erro na atualização', 'Erro ao buscar inscrições');
   }
 }

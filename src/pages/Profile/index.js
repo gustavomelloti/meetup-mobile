@@ -2,6 +2,9 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import ValidationService from '../../services/ValidationService';
+import validation from './validation';
+
 import { updateProfileRequest } from '../../store/modules/user/actions';
 import { signOut } from '../../store/modules/auth/actions';
 
@@ -39,6 +42,7 @@ export default function Profile() {
   }, [profile]);
 
   function handleSubmit() {
+    if (!ValidationService.validate({ email, name }, validation)) return;
     dispatch(
       updateProfileRequest({
         name,

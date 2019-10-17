@@ -7,6 +7,9 @@ import logo from '../../assets/logo.png';
 import Background from '../../components/Background';
 import { signInRequest } from '../../store/modules/auth/actions';
 
+import ValidationService from '../../services/ValidationService';
+import validation from './validation';
+
 import {
   Container,
   Form,
@@ -24,6 +27,7 @@ export default function SignIn({ navigation }) {
   const [password, setPassword] = useState('');
 
   function handleSubmit() {
+    if (!ValidationService.validate({ email, password }, validation)) return;
     dispatch(signInRequest(email, password));
   }
 
